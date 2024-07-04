@@ -5,7 +5,7 @@ import {
   registerApp,
   sendAuthRequest,
   shareWebpage,
-} from 'native-wechat';
+} from 'expo-native-wechat';
 import {useEffect, useState} from 'react';
 import React from 'react';
 
@@ -21,9 +21,16 @@ export default function App() {
   };
 
   const onAuth = async () => {
-    const val = await sendAuthRequest({scope: 'snsapi_userinfo'});
+    try{
+      console.log('onauth')
 
+    const val = await sendAuthRequest({scope: 'snsapi_userinfo'});
     setText(JSON.stringify(val));
+
+    }catch(e){
+      console.log(e,12321312)
+    }
+
   };
 
   const onShareWeb = async () => {
